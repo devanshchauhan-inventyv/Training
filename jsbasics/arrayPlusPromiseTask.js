@@ -15,7 +15,7 @@ function func2(element,arr){
 }
 
 new Promise(function(resolve,reject){
-    sum>50?resolve(sum):reject(`sum should be greater than 30`);
+    sum>30?resolve(sum):reject(`sum should be greater than 30`);
 })
     .then((sum)=>{
          fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${sum}`)
