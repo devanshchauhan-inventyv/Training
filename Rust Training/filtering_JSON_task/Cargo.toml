@@ -1,5 +1,5 @@
 [package]
-name = "table_task"
+name = "filtering_JSON_task"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 serde_json ="1.0.111"
-serde = { version = "1.0", features = ["derive"] }
+serde = { version = "1.0.195", features = ["derive"] }
