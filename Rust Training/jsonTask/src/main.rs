@@ -43,11 +43,6 @@ fn main() {
   
    let data =  fs::read_to_string("C:\\Users\\devan\\Downloads\\StudentData.json").expect("Failed to read");
    let mut final_data:Vec<Student>= serde_json::from_str(&data).expect("something went wrong");
-   
-//    let dta : Vec<Student> = final_data.into_iter().map(|mut data| {
-//     data.percentage = data.calculate_percentage();
-//     data
-//    }).collect();
  
     
     for iterator in &mut final_data  {
