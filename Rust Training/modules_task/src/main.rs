@@ -33,13 +33,13 @@ fn main() {
     // process_employee_data(employee_file_path);
 
      // Process Employee Data in Hashmap
-    // Uncomment the following below 2 lines to process employee data
+    // Uncomment the following below 2 lines to process employee data in hashmap
     // let employee_file_path = "src/employee_task/data/Employee.json";
     // employee_hashmap::employee_processing::process_employee_data(employee_file_path);
 
 
     // Process Student Data in Hashmap
-    // Uncomment the following below 2 lines to process student data
+    // Uncomment the following below 2 lines to process student data in hashmap
     // let student_file_path = "src/hashmap/student_task/data/StudentData.json";
     // student_hashmap::process_student_data(student_file_path);
     
