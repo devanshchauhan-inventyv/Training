@@ -1,0 +1,128 @@
+[
+  {
+    "age": 25,
+    "name": "Aarav",
+    "Skills": [
+      "Java",
+      "C#"
+    ],
+    "position": "Sr. Software Developer",
+    "experiance(y)": 5
+  },
+  {
+    "age": 28,
+    "Skills": [
+      "C#",
+      "Rust"
+    ],
+    "name": "Advait"
+  },
+  {
+    "age": 25,
+    "Skills": [
+      "Rust",
+      "C#"
+    ],
+    "name": "Aisha"
+  },
+  {
+    "Skills": [
+      "Python",
+      "C#"
+    ],
+    "name": "Diya",
+    "age": 27
+  },
+  {
+    "name": "Vihaan",
+    "Skills": [
+      "Rust",
+      "C#"
+    ],
+    "age": 28,
+    "position": "Team Lead"
+  },
+  {
+    "age": 25,
+    "Skills": [
+      "C#",
+      "Rust"
+    ],
+    "position": "Project Manager",
+    "name": "Ananya"
+  },
+  {
+    "name": "Kabir",
+    "age": 26,
+    "Skills": [
+      "Python",
+      "C#"
+    ]
+  },
+  {
+    "name": "Rohan",
+    "age": 28,
+    "Skills": [
+      "Rust",
+      "C#"
+    ]
+  },
+  {
+    "Skills": [
+      "C#",
+      "Java"
+    ],
+    "name": "Aanya",
+    "age": 25
+  },
+  {
+    "Skills": [
+      "Java",
+      "C#"
+    ],
+    "name": "Ritvik",
+    "age": 26
+  },
+  {
+    "name": "Reyansh",
+    "age": 28,
+    "Skills": [
+      "C#",
+      "Java"
+    ]
+  },
+  {
+    "age": 25,
+    "name": "Ishita",
+    "Skills": [
+      "C#",
+      "Python"
+    ]
+  },
+  {
+    "age": 26,
+    "Skills": [
+      "C#",
+      "Java"
+    ],
+    "name": "Virat"
+  },
+  {
+    "Skills": [
+      "C#",
+      "Rust"
+    ],
+    "age": 27,
+    "name": "Avani"
+  },
+  {
+    "experiance(y)": 4,
+    "age": 28,
+    "name": "Aryan",
+    "Skills": [
+      "Rust",
+      "Python"
+    ],
+    "position": "Sr. Software Developer"
+  }
+]

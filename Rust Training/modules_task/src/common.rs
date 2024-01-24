@@ -1,5 +1,7 @@
 // common.rs
 //! A module which contains all the structures and Enum which is used in this library 
+use std::iter;
+
 ///
 
 use serde::{Deserialize, Serialize};
@@ -45,7 +47,7 @@ pub fn calculate_grade(&self) -> Option<char> {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize,PartialEq,Hash,Eq)]
 /// This is a Employee struct
 pub struct Employee {
     pub name: String,
@@ -56,7 +58,7 @@ pub struct Employee {
     pub experiance_y: Option<u8>,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq,Hash,Eq)]
 /// This is a Position Enum of the employee struct
 pub enum Position {
     #[serde(rename = "Sr. Software Developer")]

@@ -1,0 +1,20 @@
+[
+  {
+    "age": 27,
+    "position": "Software Developer",
+    "name": "Arjun",
+    "Skills": [
+      "Rust",
+      "C#"
+    ]
+  },
+  {
+    "age": 26,
+    "Skills": [
+      "Rust",
+      "Java"
+    ],
+    "position": "Software Developer",
+    "name": "Ishaan"
+  }
+]
