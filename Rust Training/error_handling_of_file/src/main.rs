@@ -1,4 +1,4 @@
-use std::{fs::File, io::Read};
+use std::{fs::{self, File}, io::Read};
 fn main() {
     //error handling of a file using match
     // let file_data_result = File::open("./src/test.json");
@@ -26,10 +26,30 @@ fn main() {
     // });
 
     //reading username from file and if genertes error returning an error using the concept (propagating errors)
-    // println!("{:?}",reading_username_from_file())
+    // println!("{:?}",reading_username_from_file());
 
+    //reading username from file with ? operator and if generates error returning an error
+    // println!("{:#?}",read_username_with_questionmark_operator());
 
+    //reading username from file with ? operator and if generates error returning an error
+    // println!("{:#?}",reading_username_using_standardlib_func());
     
+}
+fn reading_username_using_standardlib_func()->Result<String,std::io::Error>{
+    fs::read_to_string("./src/name1.txt")
+}
+
+
+
+fn read_username_with_questionmark_operator()->Result<String,std::io::Error>{
+    let username_file_result=File::open("./src/name1.txt");
+    let mut username_file= match username_file_result{
+        Ok(username)=> username,
+        Err(err)=>return Err(err)
+    };
+    let mut username=String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username)
 }
 
 fn reading_username_from_file()->Result<String,std::io::Error>{

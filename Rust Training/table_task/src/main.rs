@@ -149,8 +149,8 @@ fn main() {
         cell_content:String::from("this is cell 35")
     };
 
-    
     Cell::change_cell_height(&mut cell_35, 8);
+    
     let row3 = Row::new(vec![cell_31, cell_32, cell_33, cell_34, cell_35]);
 
     
