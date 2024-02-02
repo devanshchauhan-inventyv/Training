@@ -17,7 +17,7 @@ pub fn replace_char_in_string(
     vec_of_line.into_iter().collect()
 }
 /// Replaces underscores in the given string with matched letter frequencies.
-/// 
+///
 pub fn replace_underscore_with_matched_frequency(
     line: &mut String,
     target: char,

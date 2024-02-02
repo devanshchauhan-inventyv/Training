@@ -1,0 +1,528 @@
+{
+  "rows": [
+    {
+      "cells": [
+        {
+          "cell_content": "Descr\niptio\nn(Ty\npe)",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Date I\nn Svc",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Cost/ \nBasis",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Prior \n179 B\nonus",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Bus. \nUse P\ner.",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Meth\nod",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Cv",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Life",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Crnt. \n179",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Crnt. \nBonu\ns",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Prior \nReg. \nDepr.",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Crnt. \nDepr. \nDedu\nc.",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Next \nYear \nDepr.",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Prior \nAMT",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Crnt. \nAMT",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "Crnt. \nAmo. \nDep.",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 80,
+      "row_width": 16,
+      "row_type": "HeaderRow"
+    },
+    {
+      "cells": [
+        {
+          "cell_content": "Asset\n1 - Ho\nuse In \nNY(I\nndia\nn Res\nervat\nion 5 y\near no\nn far\nm pro\nperty",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "01/01\n/2024",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "250,0\n00",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "100 M\nACR\nS 150",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "HY",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "3",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 240,
+      "row_width": 16,
+      "row_type": "DataRow"
+    },
+    {
+      "cells": [
+        {
+          "cell_content": "Asset\n2 - Ho\nuse In \nCA(I\nndia\nn Res\nervat\nion 10 \nyear f\narm p\nroper\nty)",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "01/01\n/2022",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "1500\n00",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "100 M\nACR\nS 150",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "CA",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "3",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 240,
+      "row_width": 16,
+      "row_type": "DataRow"
+    },
+    {
+      "cells": [
+        {
+          "cell_content": "Asset\n3 - Ca\nr -For\nd(Ca\nr Pro\nperty\n)",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "01/01\n/2019",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "1000\n000",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "100 M\nACR\nS 150",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "ford",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "3",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 140,
+      "row_width": 16,
+      "row_type": "DataRow"
+    },
+    {
+      "cells": [
+        {
+          "cell_content": "Asset\n3 - Ca\nr -Au\ndi(Ca\nr Pro\nperty\n)",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "01/01\n/2017",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "1500\n00",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "100 M\nACR\nS 150",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "ford",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "3",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 140,
+      "row_width": 16,
+      "row_type": "DataRow"
+    },
+    {
+      "cells": [
+        {
+          "cell_content": "Asset\n3 - Ca\nr -BM\nW(C\nar Pr\nopert\ny)",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "01/01\n/2015",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "1500\n00",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "100 M\nACR\nS 150",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "ford",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "3",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        },
+        {
+          "cell_content": "0",
+          "cell_width": 48,
+          "cell_content_width": 44
+        }
+      ],
+      "row_height": 140,
+      "row_width": 16,
+      "row_type": "DataRow"
+    }
+  ],
+  "table_height": 980,
+  "table_width": 6
+}

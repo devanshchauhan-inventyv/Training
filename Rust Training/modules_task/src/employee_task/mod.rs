@@ -13,6 +13,5 @@ pub mod file_operations;
 
 /// Re-exports common items from the `employee_processing` and `file_operations` modules.
 pub use crate::common::Employee;
+use crate::employee_task::file_operations::{read_data, write_data};
 pub use employee_processing::process_employee_data;
- use crate::employee_task::file_operations::{read_data, write_data};
-

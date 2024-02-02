@@ -1,10 +1,9 @@
 //frequency.rs
 /// #This module contains the function for frequency related processing for the frequency_task.
-/// 
+///
 /// Calculates the letter frequencies for the given input string.
 /// Returns an array representing the frequency of each letter in the alphabet.
 pub fn calculate_letter_frequencies(input: &str) -> [usize; 26] {
-  
     let mut frequencies = [0; 26];
 
     for char in input.chars() {

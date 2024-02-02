@@ -1,0 +1,122 @@
+
+{
+  "headerRow": {
+    "fontSize": 18,
+     "title": [
+      "Description(Type)",
+      "Date In Svc",
+      "Cost/ Basis",
+      "Prior 179 Bonus",
+      "Bus. Use Per.",
+      "Method",
+      "Cv",
+      "Life",
+      "Crnt. 179",
+      "Crnt. Bonus",
+      "Prior Reg. Depr.",
+      "Crnt. Depr. Deduc.",
+      "Next Year Depr.",
+      "Prior AMT",
+      "Crnt. AMT",
+      "Crnt. Amo. Dep."
+    ]
+  },
+  "dataRows": {
+    "fontSize": 12,
+    "rows": [
+      [
+        "Asset1 - House In NY(Indian Reservation 5 year non farm property",
+        "01/01/2024",
+        "250,000",
+        "0",
+        "100 MACRS 150",
+        "HY",
+        "3",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "Asset2 - House In CA(Indian Reservation 10 year farm property)",
+        "01/01/2022",
+        "150000",
+        "0",
+        "100 MACRS 150",
+        "CA",
+        "3",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "Asset3 - Car -Ford(Car Property)",
+        "01/01/2019",
+        "1000000",
+        "0",
+        "100 MACRS 150",
+        "ford",
+        "3",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "Asset3 - Car -Audi(Car Property)",
+        "01/01/2017",
+        "150000",
+        "0",
+        "100 MACRS 150",
+        "ford",
+        "3",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "Asset3 - Car -BMW(Car Property)",
+        "01/01/2015",
+        "150000",
+        "0",
+        "100 MACRS 150",
+        "ford",
+        "3",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "pageWidth":792
+}
+
+

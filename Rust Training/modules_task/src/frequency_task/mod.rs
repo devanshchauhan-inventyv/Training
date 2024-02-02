@@ -1,11 +1,11 @@
 //frequency_task.rs
-//!This module contains functionality for the frequency task 
+//!This module contains functionality for the frequency task
 ///
 ///This module uses the child module frequency to use function of that module
-/// 
+///
 mod frequency;
 ///This module uses the child module replacement to use function of that module
-/// 
+///
 mod replacement;
 use frequency::*;
 use replacement::*;
@@ -33,7 +33,7 @@ pub fn process_frequency_task() {
     let str2 = String::from("ceaser cypher");
     let frequency_of_str1 = calculate_letter_frequencies(&str1);
     let frequency_of_str2 = calculate_letter_frequencies(&str2);
-    
+
     // Step 3: Merge the frequencies of both strings
     let mut left_out_letters: [usize; 26] = [0; 26];
     let mut matched_letters_frequency =
