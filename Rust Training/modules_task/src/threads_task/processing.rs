@@ -1,4 +1,8 @@
-use std::{sync::{Arc, RwLock}, thread, time::Duration};
+use std::{
+    sync::{Arc, RwLock},
+    thread,
+    time::Duration,
+};
 
 use chrono::Utc;
 use rand::{thread_rng, Rng};
@@ -8,7 +12,7 @@ use crate::thread_data;
 /// Processes data using multiple threads.
 ///
 /// This function takes a vector of `thread_data` and processes it using multiple threads. It spawns three threads:
-/// 
+///
 /// 1. Thread 1: Adds data to the vector every 5 seconds.
 /// 2. Thread 2: Prints the content of the vector every 30 seconds.
 /// 3. Thread 3: Deletes data older than 60 seconds from the vector every 60 seconds.
@@ -21,7 +25,7 @@ use crate::thread_data;
 ///
 /// ```rust
 /// use crate::thread_data;
-/// 
+///
 /// let data = vec![
 ///     thread_data { id: 1, username: String::from("user1"), timestamp: 1643792186 },
 ///     thread_data { id: 2, username: String::from("user2"), timestamp: 1643792246 },
@@ -46,35 +50,35 @@ pub fn process_data(data: Vec<thread_data>) {
     let mut count = 1;
 
     // Thread 1: Add data to the vector every 5 seconds
-    let thread1 = thread::spawn(move || {
-        loop {
-            thread::sleep(Duration::from_secs(5));
-            let id = count;
-            let username = create_name(5);
-            let now = Utc::now();
-            let timestamp = now.timestamp();
-            ref1.write().unwrap().push(thread_data { id, username, timestamp });
-            count += 1;
-            println!("data is added");
-        }
+    let thread1 = thread::spawn(move || loop {
+        thread::sleep(Duration::from_secs(5));
+        let id = count;
+        let username = create_name(5);
+        let now = Utc::now();
+        let timestamp = now.timestamp();
+        ref1.write().unwrap().push(thread_data {
+            id,
+            username,
+            timestamp,
+        });
+        count += 1;
+        println!("data is added");
     });
 
     // Thread 2: Print the content of the vector every 30 seconds
-    let thread2 = thread::spawn(move || {
-        loop {
-            thread::sleep(Duration::from_secs(30));
-            let vector = ref2.read().unwrap();
-            println!("{:#?}", vector);
-        }
+    let thread2 = thread::spawn(move || loop {
+        thread::sleep(Duration::from_secs(30));
+        let vector = ref2.read().unwrap();
+        println!("{:#?}", vector);
     });
 
     // Thread 3: Delete data older than 60 seconds from the vector every 60 seconds
-    let thread3 = thread::spawn(move || {
-        loop {
-            thread::sleep(Duration::from_secs(60));
-            ref3.write().unwrap().retain(|e| Utc::now().timestamp() - e.timestamp > 60);
-            println!("data is deleted ")
-        }
+    let thread3 = thread::spawn(move || loop {
+        thread::sleep(Duration::from_secs(60));
+        ref3.write()
+            .unwrap()
+            .retain(|e| Utc::now().timestamp() - e.timestamp > 60);
+        println!("data is deleted ")
     });
 
     // Wait for all threads to finish

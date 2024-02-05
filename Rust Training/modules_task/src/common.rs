@@ -1,11 +1,16 @@
 // common.rs
 //! This module contains all the structures and Enum which is used in this library
 
-use std::{collections::HashMap, time::Duration};
+use super::task_assigner::processing::*;
 use chrono::prelude::*;
-///
-use serde::{Deserialize, Serialize};
 pub use lazy_static::*;
+///
+pub use serde::{Deserialize, Serialize};
+use std::{
+    collections::{HashMap, VecDeque},
+    sync::{Arc, RwLock},
+    time::Duration,
+};
 
 #[derive(Debug, Deserialize, Serialize)]
 /// This is a Student Structure
@@ -94,50 +99,46 @@ pub struct RowData {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct Cell{
-    pub cell_content:String,
-    pub cell_width:usize,
-    pub cell_content_width:usize,
-   
+pub struct Cell {
+    pub cell_content: String,
+    pub cell_width: usize,
+    pub cell_content_width: usize,
 }
 
- impl Cell{
-    pub fn new(content:String,width:usize,content_width:usize)->Cell{
+impl Cell {
+    pub fn new(content: String, width: usize, content_width: usize) -> Cell {
         Cell {
-             cell_content: content,
-             cell_width: width,
-             cell_content_width: content_width, 
-              }
-
-    } 
-
+            cell_content: content,
+            cell_width: width,
+            cell_content_width: content_width,
+        }
+    }
 }
 #[derive(Debug, Deserialize, Serialize)]
-pub enum RowType{
+pub enum RowType {
     HeaderRow,
-    DataRow
+    DataRow,
 }
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Row {
     pub cells: Vec<Cell>,
     pub row_height: usize,
-    pub number_of_columns:usize,
-    pub row_type:RowType
+    pub number_of_columns: usize,
+    pub row_type: RowType,
 }
 
 impl Row {
-    pub fn calculate_max_height(cells_height:&Vec<usize>) -> usize {
+    pub fn calculate_max_height(cells_height: &Vec<usize>) -> usize {
         let mut max_height: usize = 0;
         for i in 0..cells_height.len() {
             if cells_height[i] > max_height {
                 max_height = cells_height[i];
             }
-          
         }
         max_height
     }
 
-    pub fn new(cells: Vec<Cell>,cell_height:&Vec<usize>,row_type:RowType) -> Row {
+    pub fn new(cells: Vec<Cell>, cell_height: &Vec<usize>, row_type: RowType) -> Row {
         let row_height = Row::calculate_max_height(cell_height);
         let number_of_columns: usize = cells.len();
         Row {
@@ -147,16 +148,13 @@ impl Row {
             row_type,
         }
     }
-
-   
-   
 }
 
 #[derive(Debug, Serialize)]
 pub struct Table {
     pub rows: Vec<Row>,
     pub table_height: usize,
-    pub number_of_rows: usize
+    pub number_of_rows: usize,
 }
 
 impl Table {
@@ -169,122 +167,199 @@ impl Table {
         Table {
             rows,
             table_height,
-            number_of_rows
+            number_of_rows,
         }
     }
 }
 
 #[derive(Debug)]
-pub struct thread_data{
-    pub id:usize,
-    pub username:String,
+pub struct thread_data {
+    pub id: usize,
+    pub username: String,
     pub timestamp: i64,
-    
 }
 
+#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Customer_support {
+    pub id: usize,
+    pub name: String,
+    pub skills: Vec<String>,
+    pub status: String,
+    pub language: String,
+}
+
+#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord)]
+pub struct User_Request {
+    pub skills: String,
+    pub language: String,
+    pub request_for: String,
+}
+
+lazy_static! {
+    #[derive(Debug)]
+    pub static ref SKILLS:Vec<String>={
+        let mut vec=Vec::new();
+        vec.push("Customer Service".to_string());
+        vec.push("Problem-solving".to_string());
+        vec.push("Product Knowledge".to_string());
+        vec.push("Effective Communication".to_string());
+        vec.push("Time Management".to_string());
+        vec.push("Adaptability".to_string());
+        vec.push("Team Collaboration".to_string());
+        vec.push("Feedback Analysis".to_string());
+        vec.push("Proactive Engagement".to_string());
+        vec.push("Technical Proficiency".to_string());
+        vec.push("Cultural Sensitivity".to_string());
+        vec.push("Documentation".to_string());
+        vec
+    };
+    #[derive(Debug)]
+    pub static ref LANGUAGE:Vec<String>={
+        let mut language=Vec::new();
+        language.push("English".to_string());
+        language.push("Spanish".to_string());
+        language
+    };
+    #[derive(Debug)]
+    pub static ref STATUS:Vec<String>={
+        let mut status=Vec::new();
+        status.push("Online".to_string());
+        status.push("Offline".to_string());
+        status
+    };
+    #[derive(Debug)]
+    pub static ref REQUEST_TYPE:Vec<String>={
+        let mut request=Vec::new();
+        request.push("Incoming Call".to_string());
+        request.push("Incoming Chat".to_string());
+        request
+    };
+
+    pub static ref PENDING_USER_QUEUE:Arc<RwLock<VecDeque<User_Request>>>=Arc::new(RwLock::new(VecDeque::new()));
+
+    pub static ref CALL_USER_QUEUE:Arc<RwLock<VecDeque<User_Request>>>=Arc::new(RwLock::new(VecDeque::new()));
+
+    pub static ref CHAT_USER_QUEUE:Arc<RwLock<VecDeque<User_Request>>>=Arc::new(RwLock::new(VecDeque::new()));
 
 
-lazy_static!{
-   pub static ref HASHMAP: HashMap<char, f64> = {
-    let mut char_weights = HashMap::new();
-    char_weights.insert('0', 0.5);
-    char_weights.insert('1', 0.5);
-    char_weights.insert('2', 0.5);
-    char_weights.insert('3', 0.5);
-    char_weights.insert('4', 0.5);
-    char_weights.insert('5', 0.5);
-    char_weights.insert('6', 0.5);
-    char_weights.insert('7', 0.5);
-    char_weights.insert('8', 0.5);
-    char_weights.insert('9', 0.5);
-    char_weights.insert(' ', 0.0);
-    char_weights.insert('!', 0.333);
-    char_weights.insert('"', 0.555);
-    char_weights.insert('#', 0.5);
-    char_weights.insert('$', 0.5);
-    char_weights.insert('%', 1.0);
-    char_weights.insert('&', 0.83300006);
-    char_weights.insert('\'', 0.27800003);
-    char_weights.insert('(', 0.333);
-    char_weights.insert(')', 0.333);
-    char_weights.insert('*', 0.5);
-    char_weights.insert('+', 0.57000005);
-    char_weights.insert(':', 0.25);
-    char_weights.insert('-', 0.333);
-    char_weights.insert('.', 0.25);
-    char_weights.insert('/', 0.27800003);
-    char_weights.insert(',', 0.333);
-    char_weights.insert(';', 0.333);
-    char_weights.insert('<', 0.57000005);
-    char_weights.insert('=', 0.57000005);
-    char_weights.insert('>', 0.57000005);
-    char_weights.insert('?', 0.5);
-    char_weights.insert('@', 0.93000007);
-    char_weights.insert('A', 0.72200006);
-    char_weights.insert('B', 0.66700006);
-    char_weights.insert('C', 0.72200006);
-    char_weights.insert('D', 0.72200006);
-    char_weights.insert('E', 0.66700006);
-    char_weights.insert('F', 0.611);
-    char_weights.insert('G', 0.77800006);
-    char_weights.insert('H', 0.77800006);
-    char_weights.insert('I', 0.38900003);
-    char_weights.insert('J', 0.5);
-    char_weights.insert('K', 0.77800006);
-    char_weights.insert('L', 0.66700006);
-    char_weights.insert('M', 0.94400007);
-    char_weights.insert('N', 0.72200006);
-    char_weights.insert('O', 0.77800006);
-    char_weights.insert('P', 0.611);
-    char_weights.insert('Q', 0.77800006);
-    char_weights.insert('R', 0.72200006);
-    char_weights.insert('S', 0.55600005);
-    char_weights.insert('T', 0.66700006);
-    char_weights.insert('U', 0.72200006);
-    char_weights.insert('V', 0.72200006);
-    char_weights.insert('W', 1.0);
-    char_weights.insert('X', 0.72200006);
-    char_weights.insert('Y', 0.72200006);
-    char_weights.insert('Z', 0.66700006);
-    char_weights.insert('[', 0.333);
-    char_weights.insert('\\', 0.27800003);
-    char_weights.insert(']', 0.333);
-    char_weights.insert('^', 0.58100003);
-    char_weights.insert('_', 0.5);
-    char_weights.insert('`', 0.333);
-    char_weights.insert('a', 0.5);
-    char_weights.insert('b', 0.55600005);
-    char_weights.insert('c', 0.44400004);
-    char_weights.insert('d', 0.55600005);
-    char_weights.insert('e', 0.44400004);
-    char_weights.insert('f', 0.333);
-    char_weights.insert('g', 0.5);
-    char_weights.insert('h', 0.55600005);
-    char_weights.insert('i', 0.27800003);
-    char_weights.insert('j', 0.333);
-    char_weights.insert('k', 0.55600005);
-    char_weights.insert('l', 0.27800003);
-    char_weights.insert('m', 0.83300006);
-    char_weights.insert('n', 0.55600005);
-    char_weights.insert('o', 0.5);
-    char_weights.insert('p', 0.55600005);
-    char_weights.insert('q', 0.55600005);
-    char_weights.insert('r', 0.44400004);
-    char_weights.insert('s', 0.38900003);
-    char_weights.insert('t', 0.333);
-    char_weights.insert('u', 0.55600005);
-    char_weights.insert('v', 0.5);
-    char_weights.insert('w', 0.72200006);
-    char_weights.insert('x', 0.5);
-    char_weights.insert('y', 0.5);
-    char_weights.insert('z', 0.44400004);
-    char_weights.insert('{', 0.39400002);
-    char_weights.insert('|', 0.22000001);
-    char_weights.insert('}', 0.39400002);
-    char_weights.insert('~', 0.52000004);
-    char_weights
 
-  };
+
+
+
 
 }
 
+lazy_static! {
+    #[derive(Debug)]
+    pub static ref EXECUTIVES: Arc<RwLock<Vec<Customer_support>>> = {
+        match read_executives() {
+            Ok(data) => Arc::new(RwLock::new(data)),
+            Err(err) => {
+                println!("Error reading executives: {}", err);
+                Arc::new(RwLock::new(Vec::new())) // Return an empty vector as default
+            }
+        }
+    };
+}
+
+lazy_static! {
+    pub static ref HASHMAP: HashMap<char, f64> = {
+        let mut char_weights = HashMap::new();
+        char_weights.insert('0', 0.5);
+        char_weights.insert('1', 0.5);
+        char_weights.insert('2', 0.5);
+        char_weights.insert('3', 0.5);
+        char_weights.insert('4', 0.5);
+        char_weights.insert('5', 0.5);
+        char_weights.insert('6', 0.5);
+        char_weights.insert('7', 0.5);
+        char_weights.insert('8', 0.5);
+        char_weights.insert('9', 0.5);
+        char_weights.insert(' ', 0.0);
+        char_weights.insert('!', 0.333);
+        char_weights.insert('"', 0.555);
+        char_weights.insert('#', 0.5);
+        char_weights.insert('$', 0.5);
+        char_weights.insert('%', 1.0);
+        char_weights.insert('&', 0.83300006);
+        char_weights.insert('\'', 0.27800003);
+        char_weights.insert('(', 0.333);
+        char_weights.insert(')', 0.333);
+        char_weights.insert('*', 0.5);
+        char_weights.insert('+', 0.57000005);
+        char_weights.insert(':', 0.25);
+        char_weights.insert('-', 0.333);
+        char_weights.insert('.', 0.25);
+        char_weights.insert('/', 0.27800003);
+        char_weights.insert(',', 0.333);
+        char_weights.insert(';', 0.333);
+        char_weights.insert('<', 0.57000005);
+        char_weights.insert('=', 0.57000005);
+        char_weights.insert('>', 0.57000005);
+        char_weights.insert('?', 0.5);
+        char_weights.insert('@', 0.93000007);
+        char_weights.insert('A', 0.72200006);
+        char_weights.insert('B', 0.66700006);
+        char_weights.insert('C', 0.72200006);
+        char_weights.insert('D', 0.72200006);
+        char_weights.insert('E', 0.66700006);
+        char_weights.insert('F', 0.611);
+        char_weights.insert('G', 0.77800006);
+        char_weights.insert('H', 0.77800006);
+        char_weights.insert('I', 0.38900003);
+        char_weights.insert('J', 0.5);
+        char_weights.insert('K', 0.77800006);
+        char_weights.insert('L', 0.66700006);
+        char_weights.insert('M', 0.94400007);
+        char_weights.insert('N', 0.72200006);
+        char_weights.insert('O', 0.77800006);
+        char_weights.insert('P', 0.611);
+        char_weights.insert('Q', 0.77800006);
+        char_weights.insert('R', 0.72200006);
+        char_weights.insert('S', 0.55600005);
+        char_weights.insert('T', 0.66700006);
+        char_weights.insert('U', 0.72200006);
+        char_weights.insert('V', 0.72200006);
+        char_weights.insert('W', 1.0);
+        char_weights.insert('X', 0.72200006);
+        char_weights.insert('Y', 0.72200006);
+        char_weights.insert('Z', 0.66700006);
+        char_weights.insert('[', 0.333);
+        char_weights.insert('\\', 0.27800003);
+        char_weights.insert(']', 0.333);
+        char_weights.insert('^', 0.58100003);
+        char_weights.insert('_', 0.5);
+        char_weights.insert('`', 0.333);
+        char_weights.insert('a', 0.5);
+        char_weights.insert('b', 0.55600005);
+        char_weights.insert('c', 0.44400004);
+        char_weights.insert('d', 0.55600005);
+        char_weights.insert('e', 0.44400004);
+        char_weights.insert('f', 0.333);
+        char_weights.insert('g', 0.5);
+        char_weights.insert('h', 0.55600005);
+        char_weights.insert('i', 0.27800003);
+        char_weights.insert('j', 0.333);
+        char_weights.insert('k', 0.55600005);
+        char_weights.insert('l', 0.27800003);
+        char_weights.insert('m', 0.83300006);
+        char_weights.insert('n', 0.55600005);
+        char_weights.insert('o', 0.5);
+        char_weights.insert('p', 0.55600005);
+        char_weights.insert('q', 0.55600005);
+        char_weights.insert('r', 0.44400004);
+        char_weights.insert('s', 0.38900003);
+        char_weights.insert('t', 0.333);
+        char_weights.insert('u', 0.55600005);
+        char_weights.insert('v', 0.5);
+        char_weights.insert('w', 0.72200006);
+        char_weights.insert('x', 0.5);
+        char_weights.insert('y', 0.5);
+        char_weights.insert('z', 0.44400004);
+        char_weights.insert('{', 0.39400002);
+        char_weights.insert('|', 0.22000001);
+        char_weights.insert('}', 0.39400002);
+        char_weights.insert('~', 0.52000004);
+        char_weights
+    };
+}
