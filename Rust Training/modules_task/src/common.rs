@@ -1,15 +1,15 @@
 // common.rs
 //! This module contains all the structures and Enum which is used in this library
 
-use super::task_assigner::processing::*;
-use chrono::prelude::*;
+use crate::usercreation::read_executives;
+
+use super::task_assigner::bifurcator::*;
 pub use lazy_static::*;
 ///
 pub use serde::{Deserialize, Serialize};
 use std::{
     collections::{HashMap, VecDeque},
     sync::{Arc, RwLock},
-    time::Duration,
 };
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -188,14 +188,18 @@ pub struct Customer_support {
     pub language: String,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct User_Request {
     pub skills: String,
     pub language: String,
     pub request_for: String,
+    pub timestamp: i64,
 }
 
 lazy_static! {
+    #[derive(Debug)]
+    pub static ref ESCALATION_QUEUE:Arc<RwLock<HashMap<String,VecDeque<User_Request>>>>=Arc::new(RwLock::new(HashMap::new()));
+
     #[derive(Debug)]
     pub static ref SKILLS:Vec<String>={
         let mut vec=Vec::new();
@@ -230,9 +234,20 @@ lazy_static! {
     #[derive(Debug)]
     pub static ref REQUEST_TYPE:Vec<String>={
         let mut request=Vec::new();
-        request.push("Incoming Call".to_string());
-        request.push("Incoming Chat".to_string());
+        request.push("Call".to_string());
+        request.push("Chat".to_string());
         request
+    };
+
+    #[derive(Debug)]
+    pub static ref ESCALATION_LEVEL:Vec<String>={
+        let mut escalation=Vec::new();
+        escalation.push("L5".to_string());
+        escalation.push("L4".to_string());
+        escalation.push("L3".to_string());
+        escalation.push("L2".to_string());
+        escalation.push("L1".to_string());
+        escalation
     };
 
     pub static ref PENDING_USER_QUEUE:Arc<RwLock<VecDeque<User_Request>>>=Arc::new(RwLock::new(VecDeque::new()));

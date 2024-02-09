@@ -1,4 +1,4 @@
-use std::{sync::mpsc::{self, Receiver}, thread::{self, Thread}, time::Duration};
+use std::{sync::{mpsc::{self, Receiver}, Arc, RwLock}, thread::{self, Thread}, time::Duration, vec};
 
 fn main() {
 //    let thread1= thread::spawn(||{
@@ -18,23 +18,29 @@ fn main() {
     // });
     // x.join();
     // println!("{:#?}",v);
-    let (tx,rx)=mpsc::channel();
-    thread::spawn(move||{
-        let vals = vec![
-            String::from("hi"),
-            String::from("from"),
-            String::from("devansh")];
+    
+    
+    
+    // let (tx,rx)=mpsc::channel();
+    // thread::spawn(move||{
+    //     let vals = vec![
+    //         String::from("hi"),
+    //         String::from("from"),
+    //         String::from("devansh")];
 
-            for val in vals{
-                tx.send(val).unwrap();
-                thread::sleep(Duration::from_millis(2))
-            }
-    });
+    //         for val in vals{
+    //             tx.send(val).unwrap();
+    //             thread::sleep(Duration::from_millis(2))
+    //         }
+    // });
 
-    for received in rx{
-        println!("{}",received);
-    }
+    // for received in rx{
+    //     println!("{}",received);
+    // }
 
+
+
+    
 
 
 

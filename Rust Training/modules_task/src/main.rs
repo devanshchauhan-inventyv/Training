@@ -2,12 +2,18 @@ mod frequency_task;
 use frequency_task::*;
 use rand::thread_rng;
 use rand::Rng;
+use task_assigner::decisionmaker::decision_maker;
+use task_assigner::escalationmonitor::escalation_time_monitor;
+use task_assigner::queuecreator::creating_escalation_queue;
+use task_assigner::Executivesdatachanger::executives_language_changer;
+use task_assigner::Executivesdatachanger::executives_skill_changer;
+use task_assigner::Executivesdatachanger::executives_status_changer;
 use std::cell;
 use std::sync::Arc;
 use std::sync::RwLock;
 use std::thread;
 use std::time::Duration;
-use task_assigner::processing::*;
+use task_assigner::bifurcator::*;
 mod common;
 use common::*;
 mod student_task;
@@ -67,18 +73,19 @@ fn main() {
     // let vector: Vec<thread_data> =vec![];
     // threads_task::processing::process_data(vector);
 
+    creating_escalation_queue();
+
     let creating_user = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(3));
+        thread::sleep(Duration::from_secs(5));
         PENDING_USER_QUEUE
             .write()
             .unwrap()
-            .push_front(task_assigner::processing::generate_user());
+            .push_back(task_assigner::usercreation::generate_user());
         println!("NEW USER REQUEST GENERATED");
     });
 
-
     let bifurcator = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(4));
+        thread::sleep(Duration::from_secs(6));
         bifurcate();
     });
 
@@ -97,22 +104,34 @@ fn main() {
         executives_status_changer();
     });
 
-    let decision_maker_chat = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(7));
-        decision_maker_for_chat();
+    let decision_maker = thread::spawn(|| loop {
+        thread::sleep(Duration::from_secs(8));
+        decision_maker();
     });
 
-    let decision_maker_call = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(7
-        ));
-        decision_maker_for_call();
+    let escalation_montior = thread::spawn(|| loop {
+        thread::sleep(Duration::from_secs(10));
+        escalation_time_monitor();
     });
 
     creating_user.join().unwrap();
     bifurcator.join().unwrap();
+    escalation_montior.join().unwrap();
+    decision_maker.join().unwrap();
     executives_language_changer.join().unwrap();
     executives_skill_changer.join().unwrap();
     executives_status_changer.join().unwrap();
-    decision_maker_chat.join().unwrap();
-    decision_maker_call.join().unwrap();
 }
+
+// decision_maker_chat.join().unwrap();
+// decision_maker_call.join().unwrap();
+
+// let decision_maker_chat = thread::spawn(|| loop {
+//     thread::sleep(Duration::from_secs(7));
+//     decision_maker_for_chat();
+// });
+
+// let decision_maker_call = thread::spawn(|| loop {
+//     thread::sleep(Duration::from_secs(7));
+//     decision_maker_for_call();
+// });
