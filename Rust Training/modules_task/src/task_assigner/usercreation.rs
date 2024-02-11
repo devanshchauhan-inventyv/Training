@@ -16,7 +16,6 @@ pub fn generate_user() -> User_Request {
     let skills = SKILLS[thread_rng().gen_range(0..SKILLS.len())].to_string();
     let language = LANGUAGE[thread_rng().gen_range(0..=1)].to_string();
     let request_for = REQUEST_TYPE[thread_rng().gen_range(0..=1)].to_string();
-    
 
     let timestamp = Utc::now().timestamp();
     User_Request {

@@ -1,6 +1,5 @@
 use std::{thread, time::Duration};
 
-
 use crate::{CALL_USER_QUEUE, CHAT_USER_QUEUE, ESCALATION_LEVEL, ESCALATION_QUEUE, EXECUTIVES};
 
 pub fn decision_maker() {
@@ -97,4 +96,3 @@ pub fn decision_maker_for_call() {
         thread::sleep(Duration::from_secs(7));
     }
 }
-

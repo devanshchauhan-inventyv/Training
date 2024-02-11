@@ -1,6 +1,5 @@
-use chrono::Utc;
 use crate::{ESCALATION_QUEUE, PENDING_USER_QUEUE};
-
+use chrono::Utc;
 
 pub fn bifurcate() {
     if !PENDING_USER_QUEUE.read().unwrap().is_empty() {
@@ -35,9 +34,3 @@ pub fn bifurcate() {
             });
     }
 }
-
-
-
-
-
-

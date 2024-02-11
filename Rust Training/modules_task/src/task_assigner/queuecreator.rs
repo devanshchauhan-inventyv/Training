@@ -23,4 +23,3 @@ pub fn creating_escalation_queue() {
         }
     }
 }
-
