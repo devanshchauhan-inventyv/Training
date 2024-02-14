@@ -1,4 +1,6 @@
 mod frequency_task;
+use axum::Router;
+use axum_task::routes::get_routes;
 use frequency_task::*;
 use rand::thread_rng;
 use rand::Rng;
@@ -14,6 +16,7 @@ use task_assigner::queuecreator::creating_escalation_queue;
 use task_assigner::Executivesdatachanger::executives_language_changer;
 use task_assigner::Executivesdatachanger::executives_skill_changer;
 use task_assigner::Executivesdatachanger::executives_status_changer;
+use tokio::net::TcpListener;
 mod common;
 use common::*;
 mod student_task;
@@ -29,6 +32,8 @@ mod threads_task;
 use threads_task::*;
 mod task_assigner;
 use task_assigner::*;
+mod axum_task;
+use axum_task::*;
 // main.rs
 
 /// The main function of the program.
@@ -36,7 +41,8 @@ use task_assigner::*;
 /// This function serves as the entry point of the program. It currently demonstrates the
 /// processing of frequency tasks. Additional calls to process student and employee data
 /// are commented out and can be uncommented as needed.
-fn main() {
+#[tokio::main]
+async fn main() {
     // Process frequency task
     //Uncomment the following below line to perform frequency task
     // process_frequency_task();
@@ -73,54 +79,56 @@ fn main() {
     // let vector: Vec<thread_data> =vec![];
     // threads_task::processing::process_data(vector);
 
-    creating_escalation_queue();
+    // creating_escalation_queue();
 
-    let creating_user = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(5));
-        PENDING_USER_QUEUE
-            .write()
-            .unwrap()
-            .push_back(task_assigner::usercreation::generate_user());
-        println!("NEW USER REQUEST GENERATED");
-    });
+    // let creating_user = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(5));
+    //     PENDING_USER_QUEUE
+    //         .write()
+    //         .unwrap()
+    //         .push_back(task_assigner::usercreation::generate_user());
+    //     println!("NEW USER REQUEST GENERATED");
+    // });
 
-    let bifurcator = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(6));
-        bifurcate();
-    });
+    // let bifurcator = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(6));
+    //     bifurcate();
+    // });
 
-    let executives_skill_changer = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(10));
-        executives_skill_changer();
-    });
+    // let executives_skill_changer = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(10));
+    //     executives_skill_changer();
+    // });
 
-    let executives_language_changer = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(10));
-        executives_language_changer();
-    });
+    // let executives_language_changer = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(10));
+    //     executives_language_changer();
+    // });
 
-    let executives_status_changer = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(10));
-        executives_status_changer();
-    });
+    // let executives_status_changer = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(10));
+    //     executives_status_changer();
+    // });
 
-    let decision_maker = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(8));
-        decision_maker();
-    });
+    // let decision_maker = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(8));
+    //     decision_maker();
+    // });
 
-    let escalation_montior = thread::spawn(|| loop {
-        thread::sleep(Duration::from_secs(10));
-        escalation_time_monitor();
-    });
+    // let escalation_montior = thread::spawn(|| loop {
+    //     thread::sleep(Duration::from_secs(10));
+    //     escalation_time_monitor();
+    // });
 
-    creating_user.join().unwrap();
-    bifurcator.join().unwrap();
-    escalation_montior.join().unwrap();
-    decision_maker.join().unwrap();
-    executives_language_changer.join().unwrap();
-    executives_skill_changer.join().unwrap();
-    executives_status_changer.join().unwrap();
+    // creating_user.join().unwrap();
+    // bifurcator.join().unwrap();
+    // escalation_montior.join().unwrap();
+    // decision_maker.join().unwrap();
+    // executives_language_changer.join().unwrap();
+    // executives_skill_changer.join().unwrap();
+    // executives_status_changer.join().unwrap();
+
+    start_axum_task_server().await;
 }
 
 // decision_maker_chat.join().unwrap();

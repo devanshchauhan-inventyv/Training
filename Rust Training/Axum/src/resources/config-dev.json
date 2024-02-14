@@ -1,0 +1,6 @@
+{
+    "database": {
+      "url": "mysql://localhost:3306/dev_database",
+      "password": "dev_password"
+    }
+  }

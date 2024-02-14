@@ -12,9 +12,10 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 /// This is a Student Structure
 pub struct Student {
+    pub id: usize,
     pub name: String,
     pub phone: String,
     pub email: String,
@@ -53,9 +54,10 @@ impl Student {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq, Hash, Eq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Hash, Eq, Clone)]
 /// This is a Employee struct
 pub struct Employee {
+    pub id: usize,
     pub name: String,
     pub age: u8,
     pub skills: Vec<String>,
@@ -64,7 +66,7 @@ pub struct Employee {
     pub experiance_y: Option<u8>,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq, Hash, Eq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Hash, Eq, Clone)]
 /// This is a Position Enum of the employee struct
 pub enum Position {
     #[serde(rename = "Sr. Software Developer")]
@@ -179,7 +181,7 @@ pub struct thread_data {
     pub timestamp: i64,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct Customer_support {
     pub id: usize,
     pub name: String,
@@ -196,7 +198,27 @@ pub struct User_Request {
     pub timestamp: i64,
 }
 
+#[derive(Debug, Deserialize, Serialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
+pub struct Message<T> {
+    pub status: u32,
+    pub message_key: String,
+    pub data: T,
+}
+
 lazy_static! {
+    #[derive(Debug)]
+    pub static ref TASK:Vec<String>=
+    vec!["employee".to_string(),"student".to_string(),"customer_service".to_string()];
+
+    #[derive(Debug)]
+    pub static ref STUDENT:Arc<RwLock<Vec<Student>>>=Arc::new(RwLock::new(Vec::new()));
+
+    #[derive(Debug)]
+    pub static ref EMPLOYEE:Arc<RwLock<Vec<Employee>>>=Arc::new(RwLock::new(Vec::new()));
+
+    #[derive(Debug)]
+    pub static ref CUSTOMER_SERVICE:Arc<RwLock<Vec<Customer_support>>>=Arc::new(RwLock::new(Vec::new()));
+
     #[derive(Debug)]
     pub static ref ESCALATION_QUEUE:Arc<RwLock<HashMap<String,VecDeque<User_Request>>>>=Arc::new(RwLock::new(HashMap::new()));
 

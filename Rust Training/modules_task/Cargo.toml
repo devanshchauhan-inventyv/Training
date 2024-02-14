@@ -11,3 +11,10 @@ serde = { version = "1.0", features = ["derive"] }
 lazy_static = "1.4.0"
 chrono = "0.4.33"
 rand = "0.8.5"
+hyper = "0.14.28"
+tower-http = { version = "0.5.1", features = ["cors", "fs"] }
+axum = { version = "0.7.4", features = ["multipart"] }
+tower = { version = "0.4.13", features = ["full"]}
+config = "0.14"
+tokio = { version = "1.36.0", features = ["full"] }
+axum-util = "0.2.2"
