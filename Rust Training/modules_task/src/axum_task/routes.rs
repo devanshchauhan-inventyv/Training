@@ -22,4 +22,5 @@ fn get_user_routes() -> Router {
         .route("/customer_service/update/:id", post(update_user_cust))
         .route("/:task/delete/:id", post(delete_user))
         .route("/:task/read/:id", post(read_user))
+        
 }

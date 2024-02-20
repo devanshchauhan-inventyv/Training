@@ -1,0 +1,42 @@
+syntax = "proto3";
+package customerService;
+
+
+service CustomerService{
+    rpc create(CreateCustomerServiceRequest) returns (CustomerServiceResponse);
+    rpc read (ReadCustomerServiceRequest) returns (CustomerServiceResponse);
+    rpc update (UpdateCustomerServiceRequest) returns (CustomerServiceResponse);
+    rpc delete (DeleteCustomerServiceRequest) returns (CustomerServiceResponse);
+
+}
+
+message CustomerServiceData {
+    uint32 id=1;
+    string name=2;
+    repeated string skills=3;
+    string status=4;
+    string language=5;
+}
+
+message CreateCustomerServiceRequest {
+    CustomerServiceData customerService = 1;
+}
+
+message CustomerServiceResponse {
+    uint32 status=1;
+    string message=2;
+    CustomerServiceData customerService = 3;
+}
+
+message ReadCustomerServiceRequest {
+    uint32 id=1;
+}
+
+message UpdateCustomerServiceRequest {
+    uint32 id=1;
+    CustomerServiceData customerService = 2;
+}
+
+message DeleteCustomerServiceRequest {
+    uint32 id=1;
+}

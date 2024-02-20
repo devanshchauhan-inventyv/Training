@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "name": "Devansh chauhan",
+    "name": "Aditi Sharma",
     "skills": [
-      "rust developer",
-      "axum learner"
+      "Customer Service",
+      "Feedback Analysis"
     ],
-    "status": "Offline",
+    "status": "Online",
     "language": "English"
   },
   {
@@ -255,12 +255,12 @@
   },
   {
     "id": 25,
-    "name": "Devansh chauhan",
+    "name": "Simran Kapoor",
     "skills": [
-      "rust developer",
-      "axum expert"
+      "Product Knowledge",
+      "Effective Communication"
     ],
-    "status": "Offline",
+    "status": "Online",
     "language": "English"
   }
 ]
